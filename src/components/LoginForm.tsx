@@ -26,7 +26,7 @@ const localeMap: { [key: string]: string } = {
 };
 
 const LoginForm: React.FC = () => {
-    const {locale, changeLocale} = useLocaleContext();
+    const { changeLocale} = useLocaleContext();
     const navigation = useNavigation<StackNavigationProp<any>>();
     const intl = useIntl();
     const [selectedCountry, setSelectedCountry] = useState('AE');
@@ -45,7 +45,7 @@ const LoginForm: React.FC = () => {
     useEffect(() => {
         changeLocale(localeMap[selectedCountry]);
         setTheme(selectedCountry as keyof typeof themes);
-        sendNotification();
+        sendNotification().then(r => console.debug(r));
     }, [selectedCountry]);
 
     const sendNotification = async () => {
