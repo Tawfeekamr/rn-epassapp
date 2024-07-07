@@ -1,0 +1,23 @@
+{
+    "login": "ログイン",
+    "username": "ユーザー名",
+    "email": "メール",
+    "password": "パスワード",
+    "submit": "送信",
+    "home": "ホーム",
+    "country": "国を選択",
+    "uae": "アラブ首長国連邦",
+    "india": "インド",
+    "us": "アメリカ合衆国",
+    "japan": "日本",
+    "logout": "ログアウト",
+    "username_required": "ユーザー名が必要です",
+    "email_required": "メールが必要です",
+    "password_required": "パスワードが必要です",
+    "error": "エラー",
+    "save_error": "ユーザーデータの保存に失敗しました",
+    "language_changed_body": "言語が変更されました",
+    "language_changed": "言語アラート",
+    "username_required_underscore": "ユーザー名が必要で、アンダースコアを含める必要があります",
+    "username_required_dash": "ユーザー名が必要で、ダッシュを含める必要があります"
+}

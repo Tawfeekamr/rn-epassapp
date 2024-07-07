@@ -1,0 +1,23 @@
+{
+    "login": "Login",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Submit",
+    "home": "Home",
+    "country": "Select Country",
+    "uae": "United Arab Emirates",
+    "india": "India",
+    "us": "United States",
+    "japan": "Japan",
+    "logout": "Logout",
+    "username_required": "Username is required",
+    "email_required": "Email is required",
+    "password_required": "Password is required",
+    "error": "Error",
+    "save_error": "Failed to save user data",
+    "language_changed_body": "Language has been changed",
+    "language_changed": "Language Alert",
+    "username_required_underscore": "Username is required and must contain an underscore",
+    "username_required_dash": "Username is required and must contain a dash"
+}
