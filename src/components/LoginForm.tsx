@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Alert, KeyboardAvoidingView, Platform } from 'react-native';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import React, {useEffect, useState} from 'react';
+import {Alert, KeyboardAvoidingView, Platform, StyleSheet, View} from 'react-native';
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
 import * as SecureStore from 'expo-secure-store';
-import { Button, Title } from 'react-native-paper';
-import { useThemeContext } from '../context/themeContext';
-import { useLocaleContext } from '../context/LocaleContext';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { useNavigation } from '@react-navigation/native';
-import { useIntl } from 'react-intl';
+import {Button, Title} from 'react-native-paper';
+import {useThemeContext} from '../context/themeContext';
+import {useLocaleContext} from '../context/LocaleContext';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {useNavigation} from '@react-navigation/native';
+import {useIntl} from 'react-intl';
 import TextInputField from './TextInputField';
 import CountryPickerComponent from './CountryPicker';
 import * as Notifications from 'expo-notifications';
-import { themes } from '../theme/theme';
+import {themes} from '../theme/theme';
 import {getUsernameValidationSchema} from "../utils/usernameValidationSchema";
 import * as yup from 'yup';
+import {FormDataType} from "../@types/types";
 
-type FormData = {
-    username: string;
-    password: string;
-    email: string;
-    country: string;
-};
 
 const localeMap: { [key: string]: string } = {
     AE: 'ar',
@@ -31,19 +26,19 @@ const localeMap: { [key: string]: string } = {
 };
 
 const LoginForm: React.FC = () => {
-    const { locale, changeLocale } = useLocaleContext();
+    const {locale, changeLocale} = useLocaleContext();
     const navigation = useNavigation<StackNavigationProp<any>>();
     const intl = useIntl();
     const [selectedCountry, setSelectedCountry] = useState('AE');
-    const { theme,setTheme } = useThemeContext();
+    const {theme, setTheme} = useThemeContext();
 
     const validationSchema = yup.object().shape({
         username: getUsernameValidationSchema(intl)[selectedCountry],
-        password: yup.string().min(6).required(intl.formatMessage({ id: 'password_required' })),
-        email: yup.string().email().required(intl.formatMessage({ id: 'email_required' })),
+        password: yup.string().min(6).required(intl.formatMessage({id: 'password_required'})),
+        email: yup.string().email().required(intl.formatMessage({id: 'email_required'})),
     });
 
-    const { control, handleSubmit, formState: { errors } } = useForm<FormData>({
+    const {control, handleSubmit, formState: {errors}} = useForm<FormDataType>({
         resolver: yupResolver(validationSchema),
     });
 
@@ -56,42 +51,42 @@ const LoginForm: React.FC = () => {
     const sendNotification = async () => {
         await Notifications.scheduleNotificationAsync({
             content: {
-                title: intl.formatMessage({ id: 'language_changed' }),
-                body: intl.formatMessage({ id: 'language_changed_body' }),
+                title: intl.formatMessage({id: 'language_changed'}),
+                body: intl.formatMessage({id: 'language_changed_body'}),
             },
             trigger: null,
         });
     };
 
-    const onSubmit = async (data: FormData) => {
+    const onSubmit = async (data: FormDataType) => {
         try {
-            await SecureStore.setItemAsync('user', JSON.stringify({ ...data, country: selectedCountry }));
+            await SecureStore.setItemAsync('user', JSON.stringify({...data, country: selectedCountry}));
             navigation.navigate('Home');
         } catch (e) {
-            Alert.alert(intl.formatMessage({ id: 'error' }), intl.formatMessage({ id: 'save_error' }));
+            Alert.alert(intl.formatMessage({id: 'error'}), intl.formatMessage({id: 'save_error'}));
         }
     };
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
             <View style={styles.inner}>
-                <Title style={styles.title}>{intl.formatMessage({ id: 'login' })}</Title>
+                <Title style={styles.title}>{intl.formatMessage({id: 'login'})}</Title>
                 <TextInputField
                     control={control}
                     name="username"
-                    label={intl.formatMessage({ id: 'username' })}
+                    label={intl.formatMessage({id: 'username'})}
                     errors={errors}
                 />
                 <TextInputField
                     control={control}
                     name="email"
-                    label={intl.formatMessage({ id: 'email' })}
+                    label={intl.formatMessage({id: 'email'})}
                     errors={errors}
                 />
                 <TextInputField
                     control={control}
                     name="password"
-                    label={intl.formatMessage({ id: 'password' })}
+                    label={intl.formatMessage({id: 'password'})}
                     secureTextEntry
                     errors={errors}
                 />
@@ -99,8 +94,9 @@ const LoginForm: React.FC = () => {
                     selectedCountry={selectedCountry}
                     setSelectedCountry={setSelectedCountry}
                 />
-                <Button labelStyle={theme?.dark&&{color:theme.colors.accent}} mode="contained" onPress={handleSubmit(onSubmit)} style={styles.submitButton}>
-                    {intl.formatMessage({ id: 'submit' })}
+                <Button labelStyle={theme?.dark && {color: theme.colors.accent}} mode="contained"
+                        onPress={handleSubmit(onSubmit)} style={styles.submitButton}>
+                    {intl.formatMessage({id: 'submit'})}
                 </Button>
             </View>
         </KeyboardAvoidingView>

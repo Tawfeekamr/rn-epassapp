@@ -2,7 +2,9 @@
 
 ## Description
 
-`LoginForm` is a React functional component designed for user authentication within a React Native application. It utilizes various hooks and libraries to handle form validation, theme and locale management, and secure storage. The component supports dynamic locale and theme changes based on the selected country.
+`LoginForm` is a React functional component designed for user authentication within a React Native application. It
+utilizes various hooks and libraries to handle form validation, theme and locale management, and secure storage. The
+component supports dynamic locale and theme changes based on the selected country.
 
 ## Dependencies
 
@@ -40,6 +42,7 @@ The `LoginForm` component does not accept any props.
 ### Validation Schema
 
 The component uses Yup for form validation. The validation schema includes:
+
 - `username`: Dynamic validation based on the selected country.
 - `password`: Minimum length of 6 characters.
 - `email`: Valid email format.
@@ -58,11 +61,11 @@ An asynchronous function that handles form submission. It saves the user data se
 
 ```jsx
 import React from 'react';
-import { LoginForm } from './path/to/LoginForm';
+import {LoginForm} from './path/to/LoginForm';
 
 const App = () => {
     return (
-        <LoginForm />
+        <LoginForm/>
     );
 };
 
@@ -106,8 +109,10 @@ The component uses `expo-secure-store` to securely store user data, including th
 
 ### Notifications
 
-The component uses `expo-notifications` to send a notification when the selected country changes, indicating the language has changed.
+The component uses `expo-notifications` to send a notification when the selected country changes, indicating the
+language has changed.
 
 ## Conclusion
 
-`LoginForm` is a comprehensive component for handling user login with dynamic locale and theme management. It leverages React Native's ecosystem to provide a secure, validated, and user-friendly authentication experience.
+`LoginForm` is a comprehensive component for handling user login with dynamic locale and theme management. It leverages
+React Native's ecosystem to provide a secure, validated, and user-friendly authentication experience.

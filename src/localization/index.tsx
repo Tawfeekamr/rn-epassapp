@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, {ReactNode} from 'react';
 import * as Localization from 'expo-localization';
-import { I18nManager } from 'react-native';
-import { IntlProvider } from 'react-intl';
+import {I18nManager} from 'react-native';
+import {IntlProvider} from 'react-intl';
 
 import en from './en.json';
 import ar from './ar.json';
@@ -24,7 +24,7 @@ type Props = {
     children: ReactNode;
 };
 
-export const LocalizationProvider: React.FC<Props> = ({ children }) => (
+export const LocalizationProvider: React.FC<Props> = ({children}) => (
     <IntlProvider locale={primaryLocale} messages={messages[primaryLocale]}>
         {children}
     </IntlProvider>

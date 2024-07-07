@@ -1,30 +1,27 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Modal, FlatList, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import {FlatList, Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {CountrySupport} from "../@types/types";
 
-type Country = {
-    code: string;
-    name: string;
-};
 
 type Props = {
     selectedCountry: string;
     setSelectedCountry: (value: string) => void;
 };
 
-const supportedCountries: Country[] = [
-    { code: 'AE', name: 'United Arab Emirates' },
-    { code: 'IN', name: 'India' },
-    { code: 'US', name: 'United States' },
-    { code: 'JP', name: 'Japan' },
+const supportedCountries: CountrySupport[] = [
+    {code: 'AE', name: 'United Arab Emirates'},
+    {code: 'IN', name: 'India'},
+    {code: 'US', name: 'United States'},
+    {code: 'JP', name: 'Japan'},
 ];
 
-const CountryPickerComponent: React.FC<Props> = ({ selectedCountry, setSelectedCountry }) => {
+const CountryPickerComponent: React.FC<Props> = ({selectedCountry, setSelectedCountry}) => {
     const [visible, setVisible] = useState(false);
 
     const openPicker = () => setVisible(true);
     const closePicker = () => setVisible(false);
 
-    const renderItem = ({ item }: { item: Country }) => (
+    const renderItem = ({item}: { item: CountrySupport }) => (
         <TouchableOpacity
             style={styles.countryItem}
             onPress={() => {

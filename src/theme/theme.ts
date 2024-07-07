@@ -1,9 +1,9 @@
-import { DefaultTheme, MD3DarkTheme } from 'react-native-paper';
+import {DefaultTheme, MD3DarkTheme} from 'react-native-paper';
 
 export const themes = {
     AE: {
         ...DefaultTheme,
-        dark:false,
+        dark: false,
         colors: {
             ...DefaultTheme.colors,
             primary: '#00732F',
@@ -14,7 +14,7 @@ export const themes = {
     },
     IN: {
         ...DefaultTheme,
-        dark:false,
+        dark: false,
         colors: {
             ...DefaultTheme.colors,
             primary: '#FF9933',
@@ -24,7 +24,7 @@ export const themes = {
     },
     US: {
         ...DefaultTheme,
-        dark:false,
+        dark: false,
         colors: {
             ...DefaultTheme.colors,
             primary: '#3C3B6E',
@@ -34,7 +34,7 @@ export const themes = {
     },
     JP: {
         ...DefaultTheme,
-        dark:false,
+        dark: false,
         colors: {
             ...DefaultTheme.colors,
             primary: '#BC002D',
@@ -45,7 +45,7 @@ export const themes = {
     },
     Dark: {
         ...MD3DarkTheme,
-        dark:true,
+        dark: true,
         colors: {
             ...MD3DarkTheme.colors,
             primary: '#1f1f1f',

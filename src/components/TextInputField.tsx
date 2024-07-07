@@ -1,22 +1,16 @@
 import React from 'react';
-import { Controller } from 'react-hook-form';
-import { TextInput, HelperText } from 'react-native-paper';
-import { View, StyleSheet } from 'react-native';
+import {Controller} from 'react-hook-form';
+import {HelperText, TextInput} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
+import {TextInputFieldProps} from "../@types/types";
 
-type TextInputFieldProps = {
-    control: any;
-    name: string;
-    label: string;
-    secureTextEntry?: boolean;
-    errors: any;
-};
 
-const TextInputField: React.FC<TextInputFieldProps> = ({ control, name, label, secureTextEntry, errors }) => {
+const TextInputField: React.FC<TextInputFieldProps> = ({control, name, label, secureTextEntry, errors}) => {
     return (
         <View style={styles.inputContainer}>
             <Controller
                 control={control}
-                render={({ field: { onChange, onBlur, value } }) => (
+                render={({field: {onChange, onBlur, value}}) => (
                     <>
                         <TextInput
                             label={label}

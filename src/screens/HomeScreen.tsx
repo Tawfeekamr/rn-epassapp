@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import * as SecureStore from 'expo-secure-store';
-import { useTranslation } from 'react-i18next';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { useNavigation } from '@react-navigation/native';
-import { Text, Button, useTheme } from 'react-native-paper';
+import {useTranslation} from 'react-i18next';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {useNavigation} from '@react-navigation/native';
+import {Button, Text, useTheme} from 'react-native-paper';
 
 const HomeScreen = () => {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const navigation = useNavigation<StackNavigationProp<any>>();
     const [userData, setUserData] = React.useState<any>({});
     const theme = useTheme();
@@ -30,8 +30,8 @@ const HomeScreen = () => {
     };
 
     return (
-        <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
-            <Text style={{ color: theme.colors.primary }}>{t('home')}</Text>
+        <View style={[styles.container, {backgroundColor: theme.colors.background}]}>
+            <Text style={{color: theme.colors.primary}}>{t('home')}</Text>
             <Text>{JSON.stringify(userData, null, 2)}</Text>
             <Button mode="contained" onPress={logout}>{t('logout')}</Button>
         </View>

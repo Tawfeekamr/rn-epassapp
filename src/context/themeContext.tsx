@@ -1,14 +1,11 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, {createContext, ReactNode, useContext, useState} from 'react';
 import {themes} from "../theme/theme";
+import {ThemeContextType} from "../@types/types";
 
-type ThemeContextType = {
-    theme: typeof themes.UAE;
-    setTheme: (theme: keyof typeof themes) => void;
-};
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     const [theme, setTheme] = useState(themes.UAE);
 
     const changeTheme = (themeKey: keyof typeof themes) => {
@@ -16,7 +13,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     };
 
     return (
-        <ThemeContext.Provider value={{ theme, setTheme: changeTheme }}>
+        <ThemeContext.Provider value={{theme, setTheme: changeTheme}}>
             {children}
         </ThemeContext.Provider>
     );
